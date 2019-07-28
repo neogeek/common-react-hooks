@@ -1,0 +1,30 @@
+{
+  "name": "@neogeek/common-react-hooks",
+  "description": "Common React hooks.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "engines": {
+    "node": ">=11.0"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@neogeek/eslint-config-standards": "4.2.0",
+    "eslint": "6.1.0"
+  },
+  "keywords": [
+    "react",
+    "hooks"
+  ],
+  "authors": [
+    {
+      "name": "Scott Doxey",
+      "email": "hello@scottdoxey.com",
+      "homepage": "http://scottdoxey.com/"
+    }
+  ],
+  "homepage": "https://github.com/neogeek/common-react-hooks",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/neogeek/common-react-hooks.git"
+  }
+}
