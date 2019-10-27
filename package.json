@@ -9,8 +9,8 @@
   "license": "MIT",
   "devDependencies": {
     "@neogeek/eslint-config-standards": "4.2.0",
-    "eslint": "6.1.0",
-    "react": "16.8.6"
+    "eslint": "6.6.0",
+    "react": "16.11.0"
   },
   "keywords": [
     "react",
