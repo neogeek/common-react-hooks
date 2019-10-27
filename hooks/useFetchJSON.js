@@ -9,7 +9,7 @@ const useFetchJSON = (url, headers = {}) => {
         fetch(url, headers)
             .then(response => {
                 if (hasCanceled) {
-                    return Promise.reject();
+                    return Promise.reject("Request canceled");
                 }
                 return Promise.resolve(response);
             })
