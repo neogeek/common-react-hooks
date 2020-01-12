@@ -3,12 +3,12 @@ import {useEffect, useState} from 'react';
 const HTTP_CODE_SUCCESS = 200;
 const HTTP_CODE_REDIRECTION = 300;
 
-const useFetchJSON = (url, headers = {}) => {
+const useFetchJSON = (url, headers = {}, defaultValue = {}) => {
 
     const [
         data,
         setData
-    ] = useState();
+    ] = useState(defaultValue);
 
     let hasCanceled = false;
 
@@ -46,6 +46,8 @@ const useFetchJSON = (url, headers = {}) => {
             .then(response => response.json())
             .then(setData)
             .catch(err => {
+
+                setData(defaultValue);
 
                 throw err;
 
