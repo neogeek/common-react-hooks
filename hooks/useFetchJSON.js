@@ -61,7 +61,7 @@ const useFetchJSON = (url, headers = {}, defaultValue = {}) => {
 
     }, [url]);
 
-    return data;
+    return [data];
 
 };
 
