@@ -3,7 +3,7 @@
 ## Install
 
 ```bash
-$ npm install @neogeek/common-react-hooks
+$ npm install neogeek/common-react-hooks
 ```
 
 ## Documentation
