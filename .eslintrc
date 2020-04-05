@@ -1,6 +1,0 @@
-{
-  "extends": ["@neogeek/eslint-config-standards"],
-  "rules": {
-    "max-lines-per-function": 0
-  }
-}
