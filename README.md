@@ -1,5 +1,11 @@
 # @neogeek/common-react-hooks
 
+## Install
+
+```bash
+$ npm install @neogeek/common-react-hooks
+```
+
 ## Documentation
 
 ### `useFetchJSON`
