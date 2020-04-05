@@ -19,6 +19,20 @@ const data = useFetchJSON('/users', {
 });
 ```
 
+### `useLocalStorage`
+
+```javascript
+import { v4 as uuid } from 'uuid';
+
+const userId = useLocalStorage('userId', uuid);
+```
+
+### `useSearchParam`
+
+```javascript
+const q = useSearchParam('q');
+```
+
 ### `useUniqueId`
 
 ```javascript
