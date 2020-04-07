@@ -19,7 +19,7 @@ const useSearchParam = (name, historyMethod = 'replaceState') => {
             `?${qs.stringify(
                 { ...params, [name]: value || null },
                 { skipNulls: true }
-            )}`
+            )}${window.location.hash}`
         );
     }, [value]);
 
