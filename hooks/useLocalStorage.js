@@ -1,15 +1,16 @@
-const useLocalStorage = (key, defaultValueFunc = () => {}) => {
-    const value = localStorage.getItem(key);
+import { useEffect, useState } from 'react';
 
-    if (value) {
-        return value;
-    }
+const useLocalStorage = (key, defaultValue) => {
+    const [localValue, setLocalValue] = useState(
+        localStorage.getItem(key) ||
+            (typeof defaultValue === 'function' ? defaultValue() : defaultValue)
+    );
 
-    const defaultValue = defaultValueFunc();
+    useEffect(() => {
+        localStorage.setItem(key, localValue);
+    }, [localValue]);
 
-    localStorage.setItem(key, defaultValue);
-
-    return defaultValue;
+    return [localValue, setLocalValue];
 };
 
 export default useLocalStorage;

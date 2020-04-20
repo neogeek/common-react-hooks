@@ -30,7 +30,7 @@ const data = useFetchJSON('/users', {
 ```javascript
 import { v4 as uuid } from 'uuid';
 
-const userId = useLocalStorage('userId', uuid);
+const [userId, setUserId] = useLocalStorage('userId', uuid);
 ```
 
 ### `useSearchParam`
