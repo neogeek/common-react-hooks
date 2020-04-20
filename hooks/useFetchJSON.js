@@ -10,14 +10,14 @@ const useFetchJSON = (url, headers = {}, defaultValue = {}) => {
 
     useEffect(() => {
         fetch(url, headers)
-            .then((response) => {
+            .then(response => {
                 if (hasCanceled) {
                     return Promise.reject(new Error('Request canceled'));
                 }
 
                 return Promise.resolve(response);
             })
-            .then((response) => {
+            .then(response => {
                 if (
                     response.status >= HTTP_CODE_SUCCESS &&
                     response.status < HTTP_CODE_REDIRECTION
@@ -30,9 +30,9 @@ const useFetchJSON = (url, headers = {}, defaultValue = {}) => {
 
                 return Promise.reject(error);
             })
-            .then((response) => response.json())
+            .then(response => response.json())
             .then(setData)
-            .catch((err) => {
+            .catch(err => {
                 setData(defaultValue);
 
                 throw err;

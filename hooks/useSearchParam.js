@@ -10,7 +10,7 @@ const useSearchParam = (name, historyMethod = 'replaceState') => {
 
     useEffect(() => {
         const params = qs.parse(window.location.search, {
-            ignoreQueryPrefix: true,
+            ignoreQueryPrefix: true
         });
 
         window.history[historyMethod](
