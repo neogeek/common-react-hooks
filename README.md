@@ -36,7 +36,7 @@ const [userId, setUserId] = useLocalStorage('userId', uuid);
 ### `useSearchParam`
 
 ```javascript
-const q = useSearchParam('q');
+const [q, setQ] = useSearchParam('q');
 ```
 
 ### `useUniqueId`
