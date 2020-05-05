@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import qs from 'qs';
 
-const useSearchParam = (name, historyMethod = 'replaceState') => {
+export const useSearchParam = (name, historyMethod = 'replaceState') => {
     const [value, setValue] = useState(
         qs.parse(window.location.search, { ignoreQueryPrefix: true })[name] ||
             ''
@@ -25,5 +25,3 @@ const useSearchParam = (name, historyMethod = 'replaceState') => {
 
     return [value, setValue];
 };
-
-export default useSearchParam;

@@ -1,4 +1,4 @@
-export { default as useFetchJSON } from './hooks/useFetchJSON';
-export { default as useLocalStorage } from './hooks/useLocalStorage';
-export { default as useSearchParam } from './hooks/useSearchParam';
-export { default as useUniqueId } from './hooks/useUniqueId';
+export { useFetchJSON } from './hooks/useFetchJSON';
+export { useLocalStorage } from './hooks/useLocalStorage';
+export { useSearchParam } from './hooks/useSearchParam';
+export { useUniqueId } from './hooks/useUniqueId';
