@@ -1,5 +1,7 @@
 # @neogeek/common-react-hooks
 
+[![NPM Version](http://img.shields.io/npm/v/@neogeek/common-react-hooks.svg?style=flat)](https://www.npmjs.org/package/@neogeek/common-react-hooks)
+
 ## Install
 
 ```bash
