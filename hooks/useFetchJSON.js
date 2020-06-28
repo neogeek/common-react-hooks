@@ -6,6 +6,8 @@ const HTTP_CODE_REDIRECTION = 300;
 export const useFetchJSON = (url, headers = {}, defaultValue = {}) => {
     const [data, setData] = useState(defaultValue);
 
+    const [forceReload, setForceReload] = useState();
+
     let hasCanceled = false;
 
     useEffect(() => {
@@ -41,7 +43,7 @@ export const useFetchJSON = (url, headers = {}, defaultValue = {}) => {
         return () => {
             hasCanceled = true;
         };
-    }, [url]);
+    }, [url, forceReload]);
 
-    return [data];
+    return [data, update => setForceReload(Date.now())];
 };
