@@ -13,11 +13,11 @@ $ npm install @neogeek/common-react-hooks
 ### `useFetchJSON`
 
 ```javascript
-const data = useFetchJSON('/ping');
+const [response] = useFetchJSON('/ping');
 ```
 
 ```javascript
-const data = useFetchJSON('/users', {
+const [users] = useFetchJSON('/users', {
     method = 'GET',
     body = null,
     headers = {
