@@ -1,7 +1,7 @@
 {
   "name": "@neogeek/common-react-hooks",
   "description": "Common React hooks.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "index.js",
   "engines": {
     "node": ">=12.0"
