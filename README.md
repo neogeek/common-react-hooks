@@ -27,6 +27,22 @@ const [users] = useFetchJSON('/users', {
 });
 ```
 
+```javascript
+const [latest, updateLatest] = useFetchJSON('/latest');
+
+return (
+    <div>
+        <ul>
+            {latest.map((item, index) => (
+                <li key={index}>{item}</li>
+            ))}
+        </ul>
+
+        <button onClick={updateLatest}>Update Latest</button>
+    </div>
+);
+```
+
 ### `useLocalStorage`
 
 ```javascript
