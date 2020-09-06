@@ -25,11 +25,11 @@ export const useSearchParam = (name, historyMethod = 'replaceState') => {
                 { skipNulls: true }
             )}${window.location.hash}`
         );
-    }, [value]);
+    }, [name, historyMethod, value]);
 
     useEffect(() => {
         setValue(getSearchParams()[name] || '');
-    }, [window.location.search]);
+    }, [name, window.location.search]);
 
     return [value, setValue];
 };
