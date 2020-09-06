@@ -40,7 +40,7 @@ export const useFetchJSON = (url, headers = {}, defaultValue = {}) => {
         return () => {
             hasCanceled = true;
         };
-    }, [url, forceReload]);
+    }, [url, headers, forceReload]);
 
     return [data, () => setForceReload(Date.now())];
 };
