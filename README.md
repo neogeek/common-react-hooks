@@ -61,9 +61,9 @@ const [q, setQ] = useSearchParam('q');
 ### `useUniqueId`
 
 ```javascript
-const id = useUniqueId();
+const id = useUniqueId(); // id-1
 ```
 
 ```javascript
-const id = useUniqueId('form-field');
+const id = useUniqueId('form-field'); // form-field-1
 ```
