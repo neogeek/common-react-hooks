@@ -34,8 +34,6 @@ export const useFetchJSON = (url, headers = {}, defaultValue = {}) => {
             .then(response => response.json())
             .then(setData)
             .catch(err => {
-                setData(defaultValue);
-
                 throw err;
             });
 
