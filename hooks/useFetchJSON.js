@@ -45,5 +45,5 @@ export const useFetchJSON = (url, headers = {}, defaultValue = {}) => {
         };
     }, [url, forceReload]);
 
-    return [data, update => setForceReload(Date.now())];
+    return [data, () => setForceReload(Date.now())];
 };
