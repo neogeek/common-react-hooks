@@ -8,9 +8,8 @@ export const useFetchJSON = (url, headers = {}, defaultValue = {}) => {
 
     const [forceReload, setForceReload] = useState();
 
-    let hasCanceled = false;
-
     useEffect(() => {
+        let hasCanceled = false;
         fetch(url, headers)
             .then(response => {
                 if (hasCanceled) {
