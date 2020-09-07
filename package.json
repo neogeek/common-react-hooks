@@ -27,7 +27,7 @@
     "react-test-renderer": "16.13.1"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --verbose",
     "coverage": "jest --coverage"
   },
   "jest": {
