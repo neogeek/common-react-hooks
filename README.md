@@ -1,6 +1,7 @@
 # @neogeek/common-react-hooks
 
 [![Build Status](https://travis-ci.com/neogeek/common-react-hooks.svg?branch=master)](https://travis-ci.com/neogeek/common-react-hooks)
+[![codecov](https://codecov.io/gh/neogeek/common-react-hooks/branch/master/graph/badge.svg)](https://codecov.io/gh/neogeek/common-react-hooks)
 [![NPM Version](http://img.shields.io/npm/v/@neogeek/common-react-hooks.svg?style=flat)](https://www.npmjs.org/package/@neogeek/common-react-hooks)
 
 ## Install
