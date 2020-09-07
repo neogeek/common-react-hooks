@@ -1,35 +1,29 @@
 import { useEffect, useState } from 'react';
 
-import qs from 'qs';
+export const getSearchParam = key =>
+    new URLSearchParams(window.location.search).get(key) || '';
 
-export const getSearchParams = () =>
-    qs.parse(window.location.search, {
-        ignoreQueryPrefix: true
-    });
+export const setSearchParam = (key, value) => {
+    const params = new URLSearchParams(window.location.search);
+    params.set(key, value);
+
+    return params;
+};
 
 export const useSearchParam = (name, historyMethod = 'replaceState') => {
-    const [value, setValue] = useState(getSearchParams()[name] || '');
+    const [value, setValue] = useState(getSearchParam(name));
 
     useEffect(() => {
-        const params = getSearchParams();
-
-        if (params[name] === value) {
+        if (getSearchParam(name) === value) {
             return;
         }
 
         window.history[historyMethod](
             {},
             window.document.title,
-            `?${qs.stringify(
-                { ...params, [name]: value || null },
-                { skipNulls: true }
-            )}${window.location.hash}`
+            `?${setSearchParam(name, value)}${window.location.hash}`
         );
     }, [name, historyMethod, value]);
-
-    useEffect(() => {
-        setValue(getSearchParams()[name] || '');
-    }, [name, window.location.search]);
 
     return [value, setValue];
 };
