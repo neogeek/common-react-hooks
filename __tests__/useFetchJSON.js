@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 
-import React, { useRef } from 'react';
+import React from 'react';
 
 import { act } from 'react-dom/test-utils';
 
