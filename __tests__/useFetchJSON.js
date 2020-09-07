@@ -55,6 +55,7 @@ describe('error handling', () => {
     });
 
     afterEach(() => {
+        errorOuput.splice(0, errorOuput.length);
         console.error = originalConsoleError;
     });
 
@@ -86,8 +87,43 @@ describe('error handling', () => {
             render(<ExampleFunction />);
         });
 
-        expect(errorOuput[errorOuput.length - 1]).toEqual(
-            'Error: Invalid content type.'
+        expect(errorOuput[errorOuput.length - 1]).toContain(
+            'Invalid content type.'
+        );
+    });
+
+    test('check if request is rejected with invalid http status code', async () => {
+        const ExampleFunction = () => {
+            const [data, update] = useFetchJSON(
+                'http://localhost:8000/api',
+                null,
+                {
+                    default: 'value'
+                }
+            );
+
+            return (
+                <div>
+                    <span>{JSON.stringify(data)}</span>
+                </div>
+            );
+        };
+
+        jest.spyOn(global, 'fetch').mockImplementation(() =>
+            Promise.resolve({
+                headers: { get: () => 'application/json' },
+                status: 404,
+                statusText: 'File not found',
+                json: () => Promise.resolve('ok')
+            })
+        );
+
+        await act(async () => {
+            render(<ExampleFunction />);
+        });
+
+        expect(errorOuput[errorOuput.length - 1]).toContain(
+            '404 File not found'
         );
     });
 });

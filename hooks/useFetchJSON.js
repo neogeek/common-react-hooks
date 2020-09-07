@@ -20,20 +20,20 @@ export const useFetchJSON = (url, headers = {}, defaultValue = {}) => {
             })
             .then(response => {
                 if (
-                    response.headers
-                        .get('content-type')
-                        .indexOf('application/json') === -1
-                ) {
-                    return Promise.reject('Invalid content type.');
-                }
-
-                if (
                     response.status < HTTP_CODE_SUCCESS ||
                     response.status > HTTP_CODE_REDIRECTION
                 ) {
                     return Promise.reject(
                         `${response.status} ${response.statusText}`
                     );
+                }
+
+                if (
+                    response.headers
+                        .get('content-type')
+                        .indexOf('application/json') === -1
+                ) {
+                    return Promise.reject('Invalid content type.');
                 }
 
                 return Promise.resolve(response);
