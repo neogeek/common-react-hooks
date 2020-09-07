@@ -12,7 +12,7 @@ $ npm install @neogeek/common-react-hooks
 
 ## Documentation
 
-### `useFetchJSON(url, [headers, defaultValue])`
+### `useFetchJSON(url, [headers = {}, defaultValue = {}])`
 
 #### Simple Usage
 
@@ -51,7 +51,7 @@ return (
 );
 ```
 
-### `useLocalStorage(key, [defaultValue])`
+### `useLocalStorage(key, [defaultValue = ''])`
 
 #### String
 
@@ -73,7 +73,7 @@ const [userId, setUserId] = useLocalStorage('userId');
 const [settings, setSettings] = useLocalStorage('settings', { darkMode: true });
 ```
 
-### `useSearchParam(key, [historyMethod])`
+### `useSearchParam(key, [historyMethod = 'replaceState'])`
 
 > Note: The default for `historyMethod` is [replaceState](https://developer.mozilla.org/en-US/docs/Web/API/History/replaceState). The other option is [pushState](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState).
 
@@ -81,7 +81,7 @@ const [settings, setSettings] = useLocalStorage('settings', { darkMode: true });
 const [q, setQ] = useSearchParam('q');
 ```
 
-### `useUniqueId([key])`
+### `useUniqueId([key = 'id'])`
 
 #### Default Key
 
