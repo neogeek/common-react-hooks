@@ -39,6 +39,64 @@ test('check if value is stored in localstorage', () => {
     );
 });
 
+test('check if empty default value is stored in localstorage', () => {
+    const ExampleFunction = () => {
+        const [value, setValue] = useLocalStorage('test');
+
+        return (
+            <div>
+                <span>{value}</span>
+                <button
+                    onClick={() => {
+                        setValue('updated example');
+                    }}
+                >
+                    Update Value
+                </button>
+            </div>
+        );
+    };
+
+    const { container } = render(<ExampleFunction />);
+
+    expect(container.querySelector('span')).toHaveTextContent('');
+
+    fireEvent.click(screen.getByText('Update Value'));
+
+    expect(container.querySelector('span')).toHaveTextContent(
+        'updated example'
+    );
+});
+
+test('check if default value as a function is stored in localstorage', () => {
+    const ExampleFunction = () => {
+        const [value, setValue] = useLocalStorage('test', () => 'example');
+
+        return (
+            <div>
+                <span>{value}</span>
+                <button
+                    onClick={() => {
+                        setValue('updated example');
+                    }}
+                >
+                    Update Value
+                </button>
+            </div>
+        );
+    };
+
+    const { container } = render(<ExampleFunction />);
+
+    expect(container.querySelector('span')).toHaveTextContent('example');
+
+    fireEvent.click(screen.getByText('Update Value'));
+
+    expect(container.querySelector('span')).toHaveTextContent(
+        'updated example'
+    );
+});
+
 test('check if JSON value is stored in localstorage', () => {
     const ExampleFunction = () => {
         const [value, setValue] = useLocalStorage('test', {});
