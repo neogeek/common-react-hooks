@@ -51,7 +51,7 @@ return (
 );
 ```
 
-### `useLocalStorage(key, [defaultValue = ''])`
+### `useLocalStorage(key, [defaultValue = null])`
 
 #### String
 
