@@ -63,7 +63,7 @@ test('check if value is updated in localstorage', () => {
 
 test('check if empty value is stored in localstorage', () => {
     const ExampleFunction = () => {
-        const [value, setValue] = useLocalStorage('test', '');
+        const [value] = useLocalStorage('test', '');
 
         return (
             <div>
@@ -81,7 +81,7 @@ test('check if empty value is stored in localstorage', () => {
 
 test('check if null default value is stored in localstorage', () => {
     const ExampleFunction = () => {
-        const [value, setValue] = useLocalStorage('test');
+        const [value] = useLocalStorage('test');
 
         return (
             <div>
@@ -90,14 +90,14 @@ test('check if null default value is stored in localstorage', () => {
         );
     };
 
-    const { container } = render(<ExampleFunction />);
+    render(<ExampleFunction />);
 
     expect(localStorage.getItem('test')).toBeNull();
 });
 
 test('check if default value as a function is stored in localstorage', () => {
     const ExampleFunction = () => {
-        const [value, setValue] = useLocalStorage('test', () => 'example');
+        const [value] = useLocalStorage('test', () => 'example');
 
         return (
             <div>
@@ -115,7 +115,7 @@ test('check if default value as a function is stored in localstorage', () => {
 
 test('check if JSON value is stored in localstorage', () => {
     const ExampleFunction = () => {
-        const [value, setValue] = useLocalStorage('test', { key: 'value' });
+        const [value] = useLocalStorage('test', { key: 'value' });
 
         return (
             <div>
