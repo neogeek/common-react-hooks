@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+
+import useDeepCompareEffect from 'use-deep-compare-effect';
 
 const HTTP_CODE_SUCCESS = 200;
 const HTTP_CODE_REDIRECTION = 300;
@@ -7,7 +9,7 @@ export const useFetchJSON = (url, headers = {}, defaultValue = {}) => {
     const [data, setData] = useState(defaultValue);
     const [forceReload, setForceReload] = useState();
 
-    useEffect(() => {
+    useDeepCompareEffect(() => {
         let hasCanceled = false;
         fetch(url, headers)
             .then(response => {

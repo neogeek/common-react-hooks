@@ -20,9 +20,13 @@ afterAll(() => {
 
 test('check data is retrieved via fetch', async () => {
     const ExampleFunction = () => {
-        const [data, update] = useFetchJSON('http://localhost:8000/api', null, {
-            default: 'value'
-        });
+        const [data, update] = useFetchJSON(
+            'http://localhost:8000/api',
+            {},
+            {
+                default: 'value'
+            }
+        );
 
         return (
             <div>
@@ -63,7 +67,7 @@ describe('error handling', () => {
         const ExampleFunction = () => {
             const [data, update] = useFetchJSON(
                 'http://localhost:8000/api',
-                null,
+                {},
                 {
                     default: 'value'
                 }
@@ -96,7 +100,7 @@ describe('error handling', () => {
         const ExampleFunction = () => {
             const [data, update] = useFetchJSON(
                 'http://localhost:8000/api',
-                null,
+                {},
                 {
                     default: 'value'
                 }
