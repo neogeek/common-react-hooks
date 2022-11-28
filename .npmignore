@@ -1,5 +1,14 @@
-__tests__/
+.github/
 
 coverage/
 
+src/
+
 .eslintrc
+
+.prettierrc
+
+jest.config.mjs
+
+tsconfig.build.json
+tsconfig.json

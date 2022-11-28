@@ -1,9 +1,26 @@
 {
-  "env": {
-    "browser": true,
-    "es6": true
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": ["eslint:recommended"],
+  "rules": {
+    "@typescript-eslint/no-namespace": 0
   },
-  "extends": ["eslint:recommended", "plugin:react-hooks/recommended"],
-  "parser": "babel-eslint",
-  "plugins": ["react"]
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+      ],
+      "parserOptions": {
+        "project": ["./tsconfig.json"]
+      }
+    },
+    {
+      "files": ["*.test.ts", "*.test.tsx"],
+      "rules": {
+        "no-magic-numbers": "off"
+      }
+    }
+  ]
 }
