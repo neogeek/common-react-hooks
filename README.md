@@ -1,5 +1,6 @@
 # @neogeek/common-react-hooks
 
+[![Tests](https://github.com/neogeek/common-react-hooks/actions/workflows/test.workflow.yml/badge.svg)](https://github.com/neogeek/common-react-hooks/actions/workflows/test.workflow.yml)
 [![NPM Version](http://img.shields.io/npm/v/@neogeek/common-react-hooks.svg?style=flat)](https://www.npmjs.org/package/@neogeek/common-react-hooks)
 
 ## Install
