@@ -18,6 +18,8 @@ export default function useDisabledFocus<T>(
       return;
 
     if (disabled && ref.current === document.activeElement) {
+      ref.current.blur();
+
       setFocused(true);
     }
 

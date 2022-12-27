@@ -42,10 +42,16 @@ describe('useDisabledFocus', () => {
 
     expect(buttonElement).toHaveAttribute('disabled');
 
+    expect(buttonElement).not.toBe(document.activeElement);
+    expect(buttonElement).not.toHaveFocus();
+
     await act(async () => {
       await new Promise(resolve => setTimeout(resolve, 1100));
     });
 
     expect(buttonElement).not.toHaveAttribute('disabled');
+
+    expect(buttonElement).toBe(document.activeElement);
+    expect(buttonElement).toHaveFocus();
   });
 });
