@@ -11,6 +11,32 @@ describe('useFlash', () => {
     const ExampleFunction = () => {
       const [updated, setUpdated] = useState(false);
 
+      const isVisible = useFlash(updated, 500);
+
+      return (
+        <>
+          <button onClick={() => setUpdated(true)}>Update</button>
+          {isVisible && <p>Hello, world!</p>}
+        </>
+      );
+    };
+
+    const { container } = render(<ExampleFunction />);
+
+    fireEvent.click(screen.getByText('Update'));
+
+    expect(container.querySelector('p')).toHaveTextContent('Hello, world!');
+
+    await act(async () => {
+      await new Promise(resolve => setTimeout(resolve, 600));
+    });
+
+    expect(container.querySelector('p')).toBeNull();
+  });
+  test('flash message with default timeout', async () => {
+    const ExampleFunction = () => {
+      const [updated, setUpdated] = useState(false);
+
       const isVisible = useFlash(updated);
 
       return (
