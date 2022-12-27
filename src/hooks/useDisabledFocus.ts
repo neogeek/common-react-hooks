@@ -25,7 +25,7 @@ export default function useDisabledFocus<T>(
 
     if (disabled) {
       ref.current.setAttribute('disabled', 'disabled');
-    } else if (!disabled) {
+    } else {
       ref.current.removeAttribute('disabled');
     }
 
