@@ -16,3 +16,21 @@ $ npm install @neogeek/common-react-hooks
 ```javascript
 const isFlashVisible = useFlash(false);
 ```
+
+### `useDisabledFocus(ref, disabled)`
+
+```typescript
+const ExampleFunction = () => {
+  const [disabled, setDisabled] = useState(false);
+
+  const ref = useRef<HTMLButtonElement>(null);
+
+  useDisabledFocus(ref, disabled);
+
+  return (
+    <button ref={ref} onClick={() => setDisabled(true)}>
+      Save
+    </button>
+  );
+};
+```
