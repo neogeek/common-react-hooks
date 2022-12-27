@@ -11,12 +11,6 @@ $ npm install @neogeek/common-react-hooks
 
 ## Documentation
 
-### `useFlash(trigger, [timeoutInMilliseconds = 1000])`
-
-```javascript
-const isFlashVisible = useFlash(false);
-```
-
 ### `useDisabledFocus(ref, disabled)`
 
 ```typescript
@@ -33,4 +27,10 @@ const ExampleFunction = () => {
     </button>
   );
 };
+```
+
+### `useFlash(trigger, [timeoutInMilliseconds = 1000])`
+
+```javascript
+const isFlashVisible = useFlash(false);
 ```
