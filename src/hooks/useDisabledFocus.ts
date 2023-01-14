@@ -4,6 +4,9 @@ export default function useDisabledFocus<T>(
   ref: React.RefObject<T>,
   disabled: boolean
 ) {
+  const [showWarningForExistingAttribute, setShowWarningForExistingAttribute] =
+    useState(true);
+
   const [focused, setFocused] = useState(false);
 
   useEffect(() => {
@@ -16,6 +19,16 @@ export default function useDisabledFocus<T>(
       )
     )
       return;
+
+    if (disabled && showWarningForExistingAttribute) {
+      if (ref.current.hasAttribute('disabled')) {
+        console.warn(
+          'useDisabledFocus will not work if the disabled attribute is manually set. Instead pass the state to the useDisabledFocus method.'
+        );
+      }
+
+      setShowWarningForExistingAttribute(false);
+    }
 
     if (disabled && ref.current === document.activeElement) {
       ref.current.blur();
