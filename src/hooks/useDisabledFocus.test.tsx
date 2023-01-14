@@ -106,4 +106,46 @@ describe('useDisabledFocus', () => {
     expect(buttonElement).not.toBe(document.activeElement);
     expect(buttonElement).not.toHaveFocus();
   });
+  test('show warning if disabled tag was manually set', () => {
+    const ExampleFunction = () => {
+      const [disabled, setDisabled] = useState(false);
+
+      const ref = useRef<HTMLButtonElement>(null);
+
+      useDisabledFocus(ref, disabled);
+
+      return (
+        <button
+          ref={ref}
+          disabled={disabled}
+          onClick={() => {
+            setDisabled(true);
+
+            setTimeout(() => setDisabled(false), 1000);
+          }}
+        >
+          Save
+        </button>
+      );
+    };
+
+    render(<ExampleFunction />);
+
+    const buttonElement = screen.getByText('Save');
+
+    buttonElement.focus();
+
+    expect(buttonElement).toBe(document.activeElement);
+    expect(buttonElement).toHaveFocus();
+
+    console.warn = jest.fn();
+
+    fireEvent.click(buttonElement);
+
+    expect(console.warn).toHaveBeenCalledWith(
+      expect.stringContaining('useDisabledFocus')
+    );
+
+    jest.restoreAllMocks();
+  });
 });
