@@ -20,32 +20,32 @@ export default function useDisabledFocus<T>(
     )
       return;
 
-    if (disabled && showWarningForExistingAttribute) {
-      if (ref.current.hasAttribute('disabled')) {
-        console.warn(
-          'useDisabledFocus will not work if the disabled attribute is manually set. Instead pass the state to the useDisabledFocus method.'
-        );
+    if (disabled) {
+      if (showWarningForExistingAttribute) {
+        if (ref.current.hasAttribute('disabled')) {
+          console.warn(
+            'useDisabledFocus will not work if the disabled attribute is manually set. Instead pass the state to the useDisabledFocus method.'
+          );
+        }
+
+        setShowWarningForExistingAttribute(false);
       }
 
-      setShowWarningForExistingAttribute(false);
-    }
+      if (ref.current === document.activeElement) {
+        ref.current.blur();
 
-    if (disabled && ref.current === document.activeElement) {
-      ref.current.blur();
+        setFocused(true);
+      }
 
-      setFocused(true);
-    }
-
-    if (disabled) {
       ref.current.setAttribute('disabled', 'disabled');
     } else {
       ref.current.removeAttribute('disabled');
-    }
 
-    if (!disabled && focused && document.activeElement === document.body) {
-      ref.current.focus();
+      if (focused && document.activeElement === document.body) {
+        ref.current.focus();
 
-      setFocused(false);
+        setFocused(false);
+      }
     }
-  }, [disabled, focused, ref]);
+  }, [disabled, focused, ref, showWarningForExistingAttribute]);
 }
