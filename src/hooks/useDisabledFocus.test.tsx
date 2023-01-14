@@ -54,4 +54,56 @@ describe('useDisabledFocus', () => {
     expect(buttonElement).toBe(document.activeElement);
     expect(buttonElement).toHaveFocus();
   });
+  test('lose focus after a button is set to disabled and another button is focused', async () => {
+    const ExampleFunction = () => {
+      const [disabled, setDisabled] = useState(false);
+
+      const ref = useRef<HTMLButtonElement>(null);
+
+      useDisabledFocus(ref, disabled);
+
+      return (
+        <div>
+          <button
+            ref={ref}
+            onClick={() => {
+              setDisabled(true);
+
+              setTimeout(() => setDisabled(false), 1000);
+            }}
+          >
+            Save
+          </button>
+          <button>Cancel</button>
+        </div>
+      );
+    };
+
+    render(<ExampleFunction />);
+
+    const buttonElement = screen.getByText('Save');
+
+    buttonElement.focus();
+
+    expect(buttonElement).toBe(document.activeElement);
+    expect(buttonElement).toHaveFocus();
+
+    fireEvent.click(buttonElement);
+
+    expect(buttonElement).toHaveAttribute('disabled');
+
+    expect(buttonElement).not.toBe(document.activeElement);
+    expect(buttonElement).not.toHaveFocus();
+
+    screen.getByText('Cancel').focus();
+
+    await act(async () => {
+      await new Promise(resolve => setTimeout(resolve, 1100));
+    });
+
+    expect(buttonElement).not.toHaveAttribute('disabled');
+
+    expect(buttonElement).not.toBe(document.activeElement);
+    expect(buttonElement).not.toHaveFocus();
+  });
 });

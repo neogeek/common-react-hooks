@@ -42,7 +42,7 @@ export default function useDisabledFocus<T>(
       ref.current.removeAttribute('disabled');
     }
 
-    if (!disabled && focused) {
+    if (!disabled && focused && document.activeElement === document.body) {
       ref.current.focus();
 
       setFocused(false);
